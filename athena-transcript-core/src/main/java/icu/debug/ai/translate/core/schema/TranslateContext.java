@@ -4,6 +4,9 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * 翻译上下文信息对象
  *
@@ -24,4 +27,17 @@ public class TranslateContext {
      * 目标语言
      */
     protected String targetLange;
+
+    /**
+     * 背景信息
+     */
+    protected String background;
+
+    public Map<String, Object> toMap() {
+        Map<String, Object> result = new HashMap<>();
+        result.put("source_language", sourceLange);
+        result.put("target_language", targetLange);
+        result.put("background", background);
+        return result;
+    }
 }

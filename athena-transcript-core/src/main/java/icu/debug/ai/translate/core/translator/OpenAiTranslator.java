@@ -1,5 +1,6 @@
 package icu.debug.ai.translate.core.translator;
 
+import icu.debug.ai.translate.core.model.PromptTemplateFactory;
 import org.springframework.ai.chat.prompt.PromptTemplate;
 import org.springframework.ai.openai.OpenAiChatClient;
 
@@ -9,8 +10,8 @@ import org.springframework.ai.openai.OpenAiChatClient;
  */
 public class OpenAiTranslator extends BaseSpringAiTranslator implements Translator {
 
-    OpenAiTranslator(PromptTemplate promptTemplate, OpenAiChatClient chatClient) {
-        super(promptTemplate, chatClient);
+    OpenAiTranslator(PromptTemplateFactory templateFactory, OpenAiChatClient chatClient) {
+        super(templateFactory, chatClient);
     }
 
 }

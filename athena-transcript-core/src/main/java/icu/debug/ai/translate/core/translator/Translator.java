@@ -2,6 +2,7 @@ package icu.debug.ai.translate.core.translator;
 
 import icu.debug.ai.translate.core.schema.TranscriptDocument;
 import icu.debug.ai.translate.core.schema.TranscriptResult;
+import icu.debug.ai.translate.core.schema.TranslateContext;
 
 import java.util.List;
 
@@ -13,15 +14,15 @@ import java.util.List;
  */
 public interface Translator {
 
-    default List<TranscriptResult> translate(List<TranscriptDocument> documents) {
-        return documents.stream().map(this::translate).toList();
+    default List<TranscriptResult> translate(List<TranscriptDocument> documents, TranslateContext context) {
+        return documents.stream().map(item -> this.translate(item, context)).toList();
     }
 
+
     /**
-     * 文档翻译
-     *
-     * @param document
+     * @param document 待翻译内容
+     * @param context  翻译上下文
      * @return
      */
-    TranscriptResult translate(TranscriptDocument document);
+    TranscriptResult translate(TranscriptDocument document, TranslateContext context);
 }
